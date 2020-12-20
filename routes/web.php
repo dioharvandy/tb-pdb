@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
+
+    Route::resource('jorong', 'JorongController');
+    Route::resource('kartu-keluarga', 'KartuKeluargaController');
+    Route::resource('kewarganegaraan', 'KewarganegaraanController');
+    Route::resource('level-pendidikan', 'LevelPendidikanController');
+    Route::resource('nagari', 'NagariController');
+    Route::resource('pekerjaan', 'PekerjaanController');
+    Route::resource('penduduk', 'PendudukController');
+    Route::get('penduduk/laporan', 'PendudukController@laporan');

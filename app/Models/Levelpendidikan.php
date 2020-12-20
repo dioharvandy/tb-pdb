@@ -11,6 +11,7 @@ class Levelpendidikan extends Model
 
     protected $table = "level_pendidikans";
     public $timestamps = false;
+    
     public function penduduk(){
         return $this->hasMany('App\Models\Penduduk');
     }

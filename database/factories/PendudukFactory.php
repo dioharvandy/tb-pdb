@@ -36,7 +36,7 @@ class PendudukFactory extends Factory
             },
             'kewarganegaraan_id' =>$this->faker->randomElement(Kewarganegaraan::select('id')->get()),
             'tempat_lahir'=>$this->faker->city(),
-            'tanggal_lahir'=>Carbon::create($this->faker->dateTimeBetween('-30 years', '-20 years')->format('Y-m-d')),
+            'tanggal_lahir'=>Carbon::create($this->faker->dateTimeBetween('-80 years', '-20 years')->format('Y-m-d')),
             'agama'=>$this->faker->randomElement(['islam', 'kristen', 'hindu', 'budha', 'konghucu']),
             'jenis_kelamin'=>$this->faker->randomElement(['laki-laki','perempuan']),
             'status_pernikahan'=>$this->faker->randomElement(['Menikah','Belum Menikah']),
