@@ -22,7 +22,7 @@ class LevelPendidikanFactory extends Factory
     public function definition()
     {
         return [
-            'nama'=>$this->faker->unique()->randomElement(['tidak sekolah','sd', 'smp', 'sma','d1','d2','d3','d4', 's1', 's2','s3'])
+            'nama_pendidikan'=>$this->faker->unique()->randomElement(['tidak sekolah','sd', 'smp', 'sma','d1','d2','d3','d4', 's1', 's2','s3'])
         ];
     }
 }

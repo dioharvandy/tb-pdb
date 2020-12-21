@@ -26,7 +26,7 @@ class JorongFactory extends Factory
             'nagari_id' => function() {
                 return Nagari::factory()->create()->id;
             },
-            'nama'=>$this->faker->unique()->streetName
+            'nama_jorong'=>$this->faker->unique()->streetName
         ];
     }
 }

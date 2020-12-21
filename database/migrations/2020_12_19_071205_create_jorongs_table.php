@@ -16,7 +16,7 @@ class CreateJorongsTable extends Migration
         Schema::create('jorongs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('nagari_id')->constrained();
-            $table->string('nama');
+            $table->string('nama_jorong');
         });
     }
 

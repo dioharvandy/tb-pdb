@@ -13,7 +13,7 @@ class Kartukeluarga extends Model
     public $timestamps = false;
 
     public function jorong(){
-        return $this->belongsTo('App\Models\Jorong');
+                return $this->belongsTo('App\Models\Jorong');
     }
     public function penduduk(){
         return $this->hasMany('App\Models\Penduduk');

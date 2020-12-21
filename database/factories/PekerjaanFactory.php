@@ -22,7 +22,7 @@ class PekerjaanFactory extends Factory
     public function definition()
     {
         return [
-            'nama'=>$this->faker->unique()->jobTitle()
+            'nama_pekerjaan'=>$this->faker->unique()->jobTitle()
         ];
     }
 }

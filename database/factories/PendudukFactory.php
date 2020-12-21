@@ -27,11 +27,11 @@ class PendudukFactory extends Factory
     public function definition()
     {
         return [
-            'nama'=>$this->faker->name(),
+            'nama_penduduk'=>$this->faker->name(),
             'nik'=>$this->faker->nik(),
             'level_pendidikan_id' =>$this->faker->randomElement(Levelpendidikan::select('id')->get()),
             'pekerjaan_id' =>$this->faker->randomElement(Pekerjaan::select('id')->get()),
-            'keluarga_id'=> function() {
+            'kartu_keluarga_id'=> function() {
                 return Kartukeluarga::factory()->create()->id;
             },
             'kewarganegaraan_id' =>$this->faker->randomElement(Kewarganegaraan::select('id')->get()),

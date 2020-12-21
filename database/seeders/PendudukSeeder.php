@@ -18,7 +18,7 @@ class PendudukSeeder extends Seeder
     public function run()
     {   
         Kartukeluarga::get()->each(function($kk){
-            Penduduk::factory(5)->create(['keluarga_id'=>$kk->id]);
+            Penduduk::factory(5)->create(['kartu_keluarga_id'=>$kk->id]);
         });
         
     }
