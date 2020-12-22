@@ -11,6 +11,7 @@ class Kartukeluarga extends Model
 
     protected $table = "kartu_keluargas";
     public $timestamps = false;
+    protected $fillable = ['jorong_id', 'no','tanggal_pencatatan' ];
 
     public function jorong(){
                 return $this->belongsTo('App\Models\Jorong');

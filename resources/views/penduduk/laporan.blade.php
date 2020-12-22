@@ -14,11 +14,11 @@
             {!! Form::open(['method' => 'GET', 'url' => '/penduduk/laporan', 'class' => 'form-inline', 'role' => 'search'])  !!}
             <div class="form-group mx-sm-3 mb-2">
                 <h4 class="m-3">Penduduk Usia Produktif (14 - 64 Tahun)</h4>
-            <input class="form-control" type="search" name="produktif" value="{{request('produktif')}}" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary" type="submit">
-                <i class="fas fa-search"></i>
-                </button>
+                    <input class="form-control" type="search" name="produktif" value="{{request('produktif')}}" placeholder="Search" aria-label="Search">
             </div>
+            <button class="btn btn-primary btn-s mb-2" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
             {!! Form::close() !!}
       </div>
 
@@ -56,9 +56,9 @@
                     @endforeach
                     </tbody>
                     </table>
-                    <div class="pagination-wrapper"> {!! $penduduk->appends(['search' => Request::get('search')])->render() !!} </div>
+                    <div class="pagination-wrapper"> {!! $penduduk->appends(['produktif' => Request::get('produktif')])->render() !!} </div>
             </div>
-            </div> 
+        </div> 
       </div>
     </div>
 
@@ -67,9 +67,9 @@
           {!! Form::open(['method' => 'GET', 'url' => '/penduduk/laporan', 'class' => 'form-inline', 'role' => 'select'])  !!}
           <div class="form-group mx-sm-3 mb-2">
               <h4 class="m-3">Penduduk Pada Nagari</h4>
-              {!! Form::select('nagari', $getNagari, null, ['class' => 'form-select']) !!}
+              {!! Form::select('nagari', $getNagari, null, ['class' => 'form-control']) !!}
           </div>
-          <button class="btn btn-primary btn-s" type="submit">Submit</button>
+          <button class="btn btn-primary btn-s mb-2" type="submit">Submit</button>
           {!! Form::close() !!}
         </div>
         <div class="card-body">
@@ -118,9 +118,9 @@
           {!! Form::open(['method' => 'GET', 'url' => '/penduduk/laporan', 'class' => 'form-inline', 'role' => 'select'])  !!}
           <div class="form-group mx-sm-3 mb-2">
               <h4 class="m-3">Penduduk Dibawah SMP pada Nagari</h4>
-              {!! Form::select('nagariPendidikan', $getNagari, null, ['class' => 'form-select']) !!}
+              {!! Form::select('nagariPendidikan', $getNagari, null, ['class' => 'form-control']) !!}
           </div>
-          <button class="btn btn-primary btn-s" type="submit">Submit</button>
+          <button class="btn btn-primary btn-s mb-2" type="submit">Submit</button>
           {!! Form::close() !!}
         </div>
         <div class="card-body">
@@ -162,6 +162,4 @@
                 </div> 
           </div>
         </div>
-      </div>
-  </div>
 @endsection

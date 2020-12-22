@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', function () {
-    return view('penduduk.index');
+    return Redirect::to('/penduduk/laporan');
 });
-    Route::resource('kartu-keluarga', 'KartuKeluargaController');
-    Route::get('penduduk/laporan', 'PendudukController@laporan');
-    Route::resource('penduduk', 'PendudukController');
+
+Route::resource('kartu-keluarga', 'KartuKeluargaController');
+Route::get('penduduk/laporan', 'PendudukController@laporan');
+Route::resource('penduduk', 'PendudukController');
     

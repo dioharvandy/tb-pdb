@@ -20,9 +20,22 @@
 @endsection
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if(Session::has('flash_message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('flash_message') }}</p>
+@endif
 <div class="card card-primary card-outline">
     <div class="card-header">
-        <a href="{{ url('/kartu-keluarga/create') }}" class="btn btn-success btn-sm" title="Add New Surat">
+        {{-- <a href="{{ url('/kartu-keluarga/create') }}" class="btn btn-success btn-sm" title="Add New Surat"> --}}
+        <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addmodal" title="Add New">
             <i class="fa fa-plus" aria-hidden="true"></i> Add New
         </a>
     </div>
@@ -50,13 +63,13 @@
                             <td>{{ $item->tanggal_pencatatan }}</td>
                             <td>
                                 <a href="{{ url('/kartu-keluarga/' . $item->id ) }}" title="Show Kartu Keluarga">
-                                    <button class="btn btn-primary btn-xs">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Show
+                                    <button class="btn btn-secondary btn-xs">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
                                     </button>
                                 </a>
                                 <a href="{{ url('/kartu-keluarga/' . $item->id . '/edit') }}" title="Edit Kartu Keluarga">
-                                    <button class="btn btn-secondary btn-xs">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                                    <button class="btn btn-success btn-xs">
+                                        <i class="fa fa-pen" aria-hidden="true"></i>
                                     </button>
                                 </a>
                                 {!! Form::open([
@@ -64,11 +77,11 @@
                                     'url' => ['/kartu-keluarga', $item->id],
                                     'style' => 'display:inline'
                                 ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                    {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', array(
                                             'type' => 'submit',
                                             'class' => 'btn btn-danger btn-xs',
                                             'title' => 'Delete Kartu Keluarga',
-                                            'onclick'=>'return confirm("Confirm delete?")'
+                                            'onclick'=>'return confirm("Confirm delete? All the Penduduk data that Integrated Will be Also Deleted")'
                                     )) !!}
                                 {!! Form::close() !!}
                             </td>
@@ -79,6 +92,27 @@
                     <div class="pagination-wrapper"> {!! $kartukeluarga->appends(['search' => Request::get('search')])->render() !!} </div>
             </div>
             </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="addmodal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Kartu Keluarga</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+            </div>
+            <div class="modal-body">
+                {!! Form::open(['method' => 'GET','url' => '/kartu-keluarga/create', 
+                                'class' => 'form-horizontal', 'files' => true]) !!}
+
+                @include ('kartukeluarga.create')
+
+                {!! Form::close() !!}
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 @endsection
